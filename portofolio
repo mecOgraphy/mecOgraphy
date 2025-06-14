@@ -1,0 +1,85 @@
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Mail, Phone, Linkedin, Instagram } from "lucide-react";
+
+export default function PortfolioPage() {
+  const [lang, setLang] = useState("id");
+
+  const content = {
+    id: {
+      about: "Saya adalah seorang visual creator dan pendiri dari mecOgraphy, sebuah usaha kreatif di bidang fotografi, videografi, desain grafis, dan visual editing sejak 2023. Saya memulai karier freelance sejak 2021 dan telah bekerja sama dengan studio seperti ZigZag, One Moment, Putra Creator, dan MDXstudios.",
+      services: [
+        "Fotografi: Prewedding, Produk, Fashion, Event, Komersial",
+        "Videografi: Cinematic Wedding, Company Profile, Video Iklan",
+        "Desain Grafis: Branding, Feed Sosial Media, Poster",
+        "Editing: Foto (Retouch & Grading), Video (Cutting, SFX)"
+      ],
+      portfolio: [
+        "Instagram: @One_moment1, @putracreator.id",
+        "YouTube: ZIGZAG SGS, ZIGZAG PRO, ZIGZAG SHOOTING",
+        "Desain Grafis: @gallery_alfeth"
+      ],
+      contact: "Kontak"
+    },
+    en: {
+      about: "I am a visual creator and the founder of mecOgraphy, a creative business in photography, videography, graphic design, and visual editing since 2023. I started as a freelancer in 2021 and have collaborated with studios such as ZigZag, One Moment, Putra Creator, and MDXstudios.",
+      services: [
+        "Photography: Prewedding, Product, Fashion, Event, Commercial",
+        "Videography: Cinematic Wedding, Company Profile, Advertisement",
+        "Graphic Design: Branding, Social Media Feed, Poster",
+        "Editing: Photo (Retouching & Grading), Video (Cutting, SFX)"
+      ],
+      portfolio: [
+        "Instagram: @One_moment1, @putracreator.id",
+        "YouTube: ZIGZAG SGS, ZIGZAG PRO, ZIGZAG SHOOTING",
+        "Graphic Design: @gallery_alfeth"
+      ],
+      contact: "Contact"
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-black text-white font-sans px-4 py-10">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10">
+          <img src="/mecOgraphy_logo_standard.jpg" alt="mecOgraphy Logo" className="mx-auto w-40" />
+          <h1 className="text-4xl font-bold mt-4">M. Ri'fan Hamam Muhtadi</h1>
+          <p className="text-lg text-gray-300">Founder of mecOgraphy — Visual Creator</p>
+          <div className="mt-4">
+            <Button variant="outline" onClick={() => setLang(lang === "id" ? "en" : "id")}>{lang === "id" ? "Switch to English" : "Ganti ke Bahasa"}</Button>
+          </div>
+        </div>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-red-500">{lang === "id" ? "Tentang Saya" : "About Me"}</h2>
+          <p className="text-gray-300">{content[lang].about}</p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-red-500">{lang === "id" ? "Layanan" : "Services"}</h2>
+          <ul className="list-disc list-inside text-gray-300 space-y-2">
+            {content[lang].services.map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-semibold mb-4 text-red-500">{lang === "id" ? "Portofolio" : "Portfolio"}</h2>
+          <ul className="text-gray-300 space-y-2">
+            {content[lang].portfolio.map((item, index) => <li key={index}>{item}</li>)}
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4 text-red-500">{content[lang].contact}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+            <div className="flex items-center gap-2"><Phone className="w-4 h-4" /> 087846885880</div>
+            <div className="flex items-center gap-2"><Mail className="w-4 h-4" /> mecography23@gmail.com</div>
+            <div className="flex items-center gap-2"><Instagram className="w-4 h-4" /> <a href="https://instagram.com/ganazz.fx" className="underline">@ganazz.fx</a></div>
+            <div className="flex items-center gap-2"><Linkedin className="w-4 h-4" /> <a href="https://www.linkedin.com/in/m-rifan-hamam-muhtadi-25335036b" className="underline">LinkedIn</a></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
